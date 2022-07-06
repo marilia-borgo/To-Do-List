@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
 {% if request.user.is_authenticated%}
     <p>{{request.user}}</p>
@@ -5,7 +9,8 @@
     {%else %}
     <a href="{% url 'login' %}">Login</a>
 {%endif%}
-<hr>
+
+
 <h1> My to do list</h1>
 <a href="{% url 'task-create' %}"> Add Task</a>
 
