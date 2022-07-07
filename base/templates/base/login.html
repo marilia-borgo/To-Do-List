@@ -1,9 +1,22 @@
-<h1> Login</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+<body>
+    <div class="entrar">
+        <form class="formulario" method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input type="submit" value="Entrar">
+        </form>
 
-<form method="post">
-    {%csrf_token%}
-    {{form.as_p}}
-    <input type="submit" value="Login">
-</form>
+        <p class="formulario"> Não tem uma conta? <a href="{%url 'register'%}">Cadastre-se</a></p>
 
-<P> dont have an accont? <a href="{%url 'register'%}">Register</a></P>
+    </div>
+</body>
