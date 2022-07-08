@@ -22,18 +22,19 @@
 <body>
     <div class="container">
         <img class="banner" src="{% static 'images/To-do-list.png' %}">
+        
         <div class="add_task"><a href="{% url 'task-create' %}"> Add Task</a></div>
             
                 {% for task in tasks%}
-                <div class="tasks">
-                    <div class="title"> <p> {{task.title}}</p></div>
-                    <br>
-                    <div class="description"> <p> {{task.description}}</p></div>
-                    <a href="{% url 'task-update' task.id %}"><i class="uil uil-edit"></i></a>
-                    <a href="{% url 'task-delete' task.id %}"><i class="uil uil-trash-alt"></i></a>
-                </div>
-                {% empty %}
-                <h3>No items in list</h3>
+                    <div class="tasks">
+                        <div class="title"> <p> {{task.title}}</p></div>
+                        <br>
+                        <div class="description"> <p> {{task.description}}</p></div>
+                        <a href="{% url 'task-update' task.id %}"><i class="uil uil-edit"></i></a>
+                        <a href="{% url 'task-delete' task.id %}"><i class="uil uil-trash-alt"></i></a>
+                    </div>
+                    {% empty %}
+                    <h3>No items in list</h3>
                 {%endfor%}
                 </div>
     </div>

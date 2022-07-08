@@ -32,13 +32,8 @@ class RegisterPage(FormView):
 
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
-    context_object_name= 'tasks'
+    context_object_name = 'tasks'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context ['tasks'] = context ['tasks'].filter(user=self.request.user)
-        context ['count'] = context ['tasks'].filter(complete=False).count()
-        return context
         
 
 class TaskDetail(LoginRequiredMixin, DetailView):
@@ -47,13 +42,10 @@ class TaskDetail(LoginRequiredMixin, DetailView):
     template_name = 'base/task.html'
 
 class TaskCreate(LoginRequiredMixin, CreateView):
-    model = Task
-    fields = ['title','description', 'complete']
-    success_url = reverse_lazy('tasks') #quando criar um item mande de volta para tasks 
-
-    def form_invalid(self, form):
-        form.instance.user = self.request.user
-        return super(TaskCreate,self).form_valid(form)
+    model = Task #.objects.filter(owner=request.user)
+    fields = '__all__'
+    success_url = reverse_lazy('tasks')
+    
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
